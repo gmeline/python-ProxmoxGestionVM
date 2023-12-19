@@ -1,0 +1,57 @@
+<!--Mise en place du titre en couleur-->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+<!--Mise en place du titre "Modifier la VM"-->
+    <div class="liste-text-center">
+        <h1><span class="liste-text"><u>Modifier la VM</u></span></h1>
+    </div>    
+
+<!--L'utilisateur est connecté-->
+    {% if user.is_authenticated %}
+
+<!--Passage de ligne-->
+        <br>
+        <br>
+
+<!--Mise en place de la méthode de modification de VM-->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enregistrer les modifications</button>
+        </form>
+
+<!--Passage de ligne-->
+        <br>
+        <br>
+
+<!--Mise en place de bouton-->
+        <div>
+
+<!--Bouton pour accéder à la page de la liste des VM-->
+<div class="cadre-lien-retour">
+    <p><u>Si vous souhaitez accéder à la liste des VMs:</u></p>
+            <a href="{% url 'liste_vm' %}"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+</div>
+
+<!--Bouton pour accéder à la page d'accueil-->
+<div class="cadre-lien-retour">
+    <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+    <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+</div>
+
+<!--L'utilisateur n'est pas connecté-->        
+    {% else %}
+        <p>Merci de vous connecter pour accéder à cette page.</p>
+        <a href="{% url 'custom_login' %}">Se connecter</a>
+
+<!--Mise en place de bouton-->
+            <div>
+        <!--Mise en place du bouton pour revenir à la liste des VM-->        
+                <p><u>Si vous souhaitez accéder à la liste des VMs:</u></p>
+                <a href="{% url 'liste_vm' %}"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+        <!--Mise en place d'un bouton pour retourner vers la page d'accueil-->
+                <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+                <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+            </div>
+    {% endif %}

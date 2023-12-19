@@ -1,0 +1,53 @@
+<!-- Mise en place de la connexiona vec le fichier de CSS -->
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+<!--Mise en place du titre "Créer un nouvel OS"-->
+    <div class="liste-text-center">
+        <h1><span class="liste-text"><u>Créer un nouvel OS</u></span></h1>
+    </div>
+
+<!--L'utilisateur est connecté-->
+    {% if user.is_authenticated %}
+    
+<!-- Passage de ligne -->
+        <br>
+        <br>
+  
+<!--Mise en place de la création de l'OS-->
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Créer OS</button>
+        </form>
+
+<!-- Passage de ligne -->
+        <br>
+        <br>
+
+<!-- Mise en place du bouton pour revenir à la liste des OS -->
+<div class="cadre-lien-retour">
+    <p><u>Si vous souhaitez accéder à la liste des OS:</u></p>
+    <a href="{% url 'liste_os' %}"><button class="btn btn-primary-os">Accéder à la liste des OS</button></a>
+</div>
+<!--Bouton pour accéder à la page d'accueil-->
+<div class="cadre-lien-retour">
+    <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+    <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+</div>
+<!--L'utilisateur n'est pas connecté-->
+        {% else %}
+            <p>Merci de vous connecter pour accéder à cette page.</p>
+            <a href="{% url 'custom_login' %}">Se connecter</a>
+
+<!-- Mise en place du bouton pour revenir à la liste des OS -->
+            <div class="cadre-lien-retour">
+                <p><u>Si vous souhaitez accéder à la liste des OS:</u></p>
+                <a href="{% url 'liste_os' %}"><button class="btn btn-primary-os">Accéder à la liste des OS</button></a>
+            </div>
+<!--Bouton pour accéder à la page d'accueil-->
+            <div class="cadre-lien-retour">
+                <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+                <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+            </div>
+        {% endif %}

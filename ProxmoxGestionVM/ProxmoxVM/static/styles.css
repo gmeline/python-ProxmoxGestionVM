@@ -1,0 +1,22 @@
+/*Page d'accueil*/
+.bienvenue-text {
+    color: turquoise; 
+}
+.bienvenue-text-center {
+    text-align: center;
+}
+
+/*Page Liste des Machines Virtuelles*/
+.liste-text {
+    color: turquoise; 
+}
+.liste-text-center {
+    text-align: center;
+}
+
+.cadre-lien-retour {
+    display: inline-block;
+    margin-right: 10px; /* Ajoutez une marge entre les boutons si nécessaire */
+    border: 1px solid #000; /* Ajoutez une bordure */
+    padding: 5px;
+}

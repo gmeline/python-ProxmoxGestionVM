@@ -1,0 +1,47 @@
+{% load socialaccount %}
+<!--Mise en place du titre en couleur-->
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+<!--Mise en place du titre "Bonjour et bienvenue sur le projet VM !"-->
+    <div class="bienvenue-text-center">
+        <h1><span class="bienvenue-text">Bonjour et bienvenue sur le projet VM !</span></h1>
+    </div>   
+     
+<!--Permet de passer une ligne-->
+    <br>
+
+<!--Mise en place de bouton pour s'inscrire, se connecter ou se déconnecter-->
+    {% if user.is_authenticated %}
+        <p>Bienvenue, {{ user.username }}! <a href="{% url 'account_logout' %}">Déconnexion</a></p>   
+        
+<!--Mise en place d'un bouton pour accéder à la liste des VMs-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des VM cliquez ci-dessous:</u></p>
+            <a href="{% url 'liste_vm' %}"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+        </div>
+<!--Bouton pour accéder à la liste des OS-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des OS:</u></p>
+            <a href="{% url 'liste_os' %}"><button class="btn btn-primary-os">Accéder à la liste des OS</button></a>
+        </div>
+
+    {% else %}
+
+        <p>Pour accéder à toutes les fonctionnalités, veuillez <a href="{% url 'account_login' %}">vous connecter</a> ou <a href="{% url 'account_signup' %}">vous inscrire</a>.</p>
+            
+<!--Permet de passer une ligne-->
+        <br>
+
+<!--Mise en place d'un bouton pour accéder à la liste des VMs-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des VM cliquez ci-dessous:</u></p>
+            <a href="{% url 'liste_vm' %}"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+        </div>
+<!--Bouton pour accéder à la liste des OS-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des OS:</u></p>
+            <a href="{% url 'liste_os' %}"><button class="btn btn-primary-os">Accéder à la liste des OS</button></a>
+        </div>
+
+    {% endif %}

@@ -1,0 +1,53 @@
+<!-- Mise en place de la connexiona vec le fichier de CSS -->
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+<!-- Mise en place du titre "Création d'une Machine Virtuelle" -->
+    <div class="liste-text-center">
+        <h1><span class="liste-text"><u>Création d'une Machine Virtuelle</u></span></h1>
+    </div>
+
+<!--L'utilisateur est connecté-->
+    {% if user.is_authenticated %}
+    
+<!-- Passage de ligne -->
+        <br>
+        <br>
+
+<!-- Mise en place de la création de la VM -->
+        <form method="post" id="createVmForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="createVmButton">Créer la VM</button>
+        </form>
+
+<!-- Passage de ligne -->
+        <br>
+        <br>
+
+<!--Bouton pour accéder à la liste des VM-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des VM ci-dessous:</u></p>
+            <a href="{% url 'liste_vm' %}" id="listeVmButton"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+        </div>
+<!--Bouton pour accéder à la page d'accueil-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+            <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+        </div>
+<!--L'utilisateur n'est pas connecté-->
+    {% else %}
+        <p>Merci de vous connecter pour accéder à cette page.</p>
+        <a href="{% url 'custom_login' %}">Se connecter</a>
+
+<!-- Mise en place du bouton pour revenir à la liste des VM -->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la liste des VM ci-dessous:</u></p>
+            <a href="{% url 'liste_vm' %}" id="listeVmButton"><button class="btn btn-primary-vm">Accéder à la liste des VM</button></a>
+        </div>
+<!--Bouton pour accéder à la page d'accueil-->
+        <div class="cadre-lien-retour">
+            <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+            <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+        </div>
+    {% endif %}

@@ -1,0 +1,53 @@
+<!--Mise en place du titre en couleur-->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+
+<!--Mise en place du titre "Liste des machines virtuelles"-->
+    <div class="liste-text-center">
+        <h1><span class="liste-text"><u>Liste des Machines Virtuelles</u></span></h1>
+    </div>    
+
+<!--Passage de ligne-->
+    <br>
+    <br>
+
+<!--Mise en place de la liste des VMs-->
+    <h3><u>Voici la liste des Machines virtuelles:</u></h3>
+    <ul>
+        {% for vm in vms %}
+            <li>ID de la VM : {{ vm.vmid }} | Nom : {{ vm.name }} | Statut : <u>{{ vm.status }}</u></li>
+            <a href="{% url 'modifier_vm' vm.vmid %}"><button>Modifier</button></a>
+        {% endfor %}
+    </ul>
+
+<!--Passage de ligne-->
+    <br>
+    <br>
+
+<!--Mise en place du pop up de création de VM-->
+    <script>
+        // Récupérer la chaîne de requête de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const successMessage = urlParams.get('success_message');
+
+        // Afficher la popup si le message de succès est présent
+        if (successMessage) {
+            alert(successMessage);
+        }
+    </script>
+
+<!--Mise en place d'un bouton pour créer une VM-->        
+    <div class="cadre-lien-retour">
+        <p><u>Si vous souhaitez accéder à la page de création de VM:</u></p>
+        <a href="{% url 'creer_vm' %}"><button class="bouton-creer-vm">Créer une nouvelle VM</button></a>
+    </div>
+<!--Mise en place d'un bouton pour supprimer des VMs-->
+    <div class="cadre-lien-retour">
+        <p><u>Si vous souhaitez accéder à la page de suppression de VM:</u></p>
+        <a href="{% url 'supprimer_vm' %}"><button class="btn btn-delete">Supprimer une VM</button></a>
+    </div>
+<!--Bouton pour accéder à la page d'accueil-->
+    <div class="cadre-lien-retour">
+        <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+        <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+    </div>

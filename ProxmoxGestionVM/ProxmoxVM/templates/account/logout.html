@@ -1,0 +1,24 @@
+<!-- Mise en place de la connexion avec le fichier de CSS -->
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+   
+<!-- Mise en place du titre "Inscription" -->
+    <div class="liste-text-center">
+        <h1><span class="liste-text"><u>Profil de {{ user.username }}</u></span></h1>
+    </div>   
+
+<!-- Passage de ligne -->
+    <br>
+    <br>
+
+<!--Mise en place de la méthode pour se déconnecter-->
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Déconnexion">
+    </form>
+
+<!--Bouton pour accéder à la page d'accueil-->
+<div class="cadre-lien-retour">
+    <p><u>Si vous souhaitez accéder à la page d'accueil:</u></p>
+    <a href="{% url 'accueil' %}"><button class="btn btn-primary-accueil">Retour à la page d'accueil</button></a>
+</div>
