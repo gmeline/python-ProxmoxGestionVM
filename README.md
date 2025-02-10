@@ -83,5 +83,5 @@ Le projet utilise l'API REST de Proxmox pour récupérer et gérer les VM.
 _____________
 📜 Licence
 
-Ce projet est sous licence MIT.
+Ce projet est fait par Godefroy Méline.
 
